@@ -1,0 +1,36 @@
+-- For Windows, download a font from Nerd Fonts
+-- https://github.com/kyazdani42/nvim-web-devicons/issues/76#issuecomment-998656272
+
+vim.g.nvim_tree_indent_markers = 1
+vim.g.nvim_tree_highlight_opened_files = 1
+-- vim.g.nvim_tree_group_empty = 1
+
+vim.g.nvim_tree_show_icons = {
+    git = 1,
+    folders = 1,
+    files = 1,
+    folder_arrows = 1
+}
+
+local tree_cb = require('nvim-tree.config').nvim_tree_callback
+
+require('nvim-tree').setup({
+    git = { ignore = false },
+    view = {
+        mappings = {
+            custom_only = false,
+            list = {
+                { key = 'v', cb = tree_cb('vsplit') }
+            }
+        }
+    },
+    actions = {
+        open_file = {
+            quit_on_open = true
+        }
+    }
+})
+
+local map = require('lib.keymap').keymap
+
+map('n', '<leader>n', ':NvimTreeFindFileToggle<CR>:NvimTreeResize 25<CR>')
