@@ -27,27 +27,36 @@ telescope.setup({
         mappings = {
             i = {
                 ['<Tab>'] = actions.move_selection_next,
-                ['<S-Tab>'] = actions.move_selection_previous
+                ['<S-Tab>'] = actions.move_selection_previous,
+                ['<C-j>'] = actions.preview_scrolling_down,
+                ['<C-k>'] = actions.preview_scrolling_up,
+            },
+            n = {
+                ['<C-j>'] = actions.preview_scrolling_down,
+                ['<C-k>'] = actions.preview_scrolling_up,
             }
+
         },
         sorting_strategy = 'ascending',
-        layout_strategy = 'flex',
+        layout_strategy = 'vertical',
         layout_config = {
+            scroll_speed = 4,
             vertical = {
-                height = 0.8,
+                height = 0.9,
                 preview_cutoff = 1,
-                width = 0.8,
+                preview_height = 0.65,
+                width = 0.9,
                 prompt_position = 'top',
                 mirror = true
             },
             horizontal = {
-                height = 0.8,
+                height = 0.9,
                 preview_cutoff = 1,
-                width = 0.8,
+                width = 0.9,
                 prompt_position = 'top'
             }
         },
-        file_ignore_patterns = { '.git/' }
+        file_ignore_patterns = { '.git/', '.DS_Store', 'Cargo.lock' }
     },
     pickers = {
         find_files = {
@@ -67,14 +76,14 @@ telescope.setup({
     }
 })
 
-telescope.load_extension('fzf')
+-- telescope.load_extension('fzf')
 
 local map = require('lib.keymap').keymap
 
 map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<CR>')
 map('n', '<leader>fF', '<cmd>lua require("telescope.builtin").find_files({ no_ignore = true, prompt_title = "All Files" })<CR>')
 
-map('n', '<leader>fg', '<cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw()<CR>')
+map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
 
 map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<CR>')
 

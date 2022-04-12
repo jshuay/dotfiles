@@ -2,8 +2,9 @@ local map = require('lib.keymap').keymap
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+map('n', ' ', '<Nop>')
 
-map('n', '<leader><CR>', ':source ~/.config/nvim/init.lua<CR>')
+map('n', '<leader><CR>', ':source ~/.config/nvim/init.lua<CR>', { silent = false })
 
 map('', '<ScrollWheelUp>', 'k')
 map('', '<ScrollWheelDown>', 'j')

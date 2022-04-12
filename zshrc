@@ -109,7 +109,8 @@ alias vim=~/.toolbox/nvim/nvim.appimage
 alias python=python3
 alias pip=pip3
 
-alias wiki="vi ~/vimwiki/index.md"
+# alias wiki="vi --cmd 'cd ~/vimwiki/' ~/vimwiki/index.md"
+# alias zk="vi --cmd 'cd ~/vimwiki/' -c ':VimwikiMakeDiaryNote'"
 
 alias open="explorer.exe"
 

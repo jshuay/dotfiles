@@ -5,6 +5,27 @@ vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_highlight_opened_files = 1
 -- vim.g.nvim_tree_group_empty = 1
 
+vim.g.nvim_tree_icons = {
+    default = "",
+    symlink = "",
+    git = {
+        unstaged = "ﱤ",
+        staged = "ﱣ",
+        unmerged = "",
+        renamed = "➜",
+        deleted = "",
+        untracked = "◌",
+        ignored = ""
+    },
+    folder = {
+        default = "",
+        open = "",
+        empty = "",
+        empty_open = "",
+        symlink = "",
+    },
+}
+
 vim.g.nvim_tree_show_icons = {
     git = 1,
     folders = 1,
@@ -34,3 +55,10 @@ require('nvim-tree').setup({
 local map = require('lib.keymap').keymap
 
 map('n', '<leader>n', ':NvimTreeFindFileToggle<CR>:NvimTreeResize 25<CR>')
+
+vim.cmd([[
+    augroup NvimTreeKeymap
+        autocmd!
+        autocmd FileType NvimTree nmap <silent><buffer> <leader><leader> :NvimTreeFindFileToggle<CR>:NvimTreeResize 25<CR>
+    augroup end
+]])

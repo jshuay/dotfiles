@@ -13,7 +13,7 @@ packer.startup(function(use)
         config = config('gruvbox')
     })
 
-    use({ 'airblade/vim-rooter' })
+    -- use({ 'airblade/vim-rooter' })
 
     -- use({ 'roman/golden-ratio' })
 
@@ -100,9 +100,20 @@ packer.startup(function(use)
         requires = {
             'nvim-lua/plenary.nvim',
             'kyazdani42/nvim-web-devicons',
-            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-            'nvim-telescope/telescope-live-grep-raw.nvim'
+            -- { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+            -- 'nvim-telescope/telescope-live-grep-raw.nvim'
         },
         config = config('telescope')
+    })
+
+    -- use({
+    --     'vimwiki/vimwiki',
+    --     config = config('vimwiki')
+    -- })
+
+    use({
+        'nvim-lualine/lualine.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = config('lualine')
     })
 end)

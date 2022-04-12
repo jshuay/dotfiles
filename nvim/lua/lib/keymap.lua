@@ -5,8 +5,7 @@ M.keymap = function(mode, lhs, rhs, opts)
         mode,
         lhs,
         rhs,
-        -- vim.tbl_extend('keep', opts or {}, { noremap = true, silent = true })
-        vim.tbl_extend('keep', opts or {}, { noremap = true })
+        vim.tbl_extend('keep', opts or {}, { noremap = true, silent = true })
     )
 end
 
@@ -16,8 +15,7 @@ M.buf_keymap = function(bufnr, mode, lhs, rhs, opts)
         mode,
         lhs,
         rhs,
-        -- vim.tbl_extend('keep', opts or {}, { noremap = true, silent = true })
-        vim.tbl_extend('keep', opts or {}, { noremap = true })
+        vim.tbl_extend('keep', opts or {}, { noremap = true, silent = true })
     )
 end
 

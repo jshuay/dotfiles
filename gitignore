@@ -1,0 +1,5 @@
+/target
+/bin
+/pkg
+/build
+**/.DS_Store

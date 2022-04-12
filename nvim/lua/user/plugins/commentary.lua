@@ -1,4 +1,4 @@
 local map = require('lib.keymap').keymap
 
-map('n', '<C-_>', 'gcc', { noremap = false })
-map('v', '<C-_>', 'gc', { noremap = false })
+map('n', '<Bslash>', 'gcc', { noremap = false })
+map('v', '<Bslash>', 'gc', { noremap = false })

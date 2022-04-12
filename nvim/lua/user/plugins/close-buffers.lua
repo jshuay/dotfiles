@@ -1,3 +1,3 @@
 local map = require('lib.keymap').keymap
 
-map('n', '<leader>Q', ':Bdelete hidden<CR>')
+map('n', '<leader>Q', ':Bwipeout hidden<CR>')
