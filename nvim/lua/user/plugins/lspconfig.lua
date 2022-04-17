@@ -38,6 +38,9 @@ opts[lua.server] = lua.opts
 local rust = require('user.plugins.lsp.rust')
 opts[rust.server] = rust.opts
 
+local typescript = require('user.plugins.lsp.typescript')
+opts[typescript.server] = typescript.opts
+
 -- TODO: Remove this in neovim 0.7.0+
 for _,opt in pairs(opts) do
     if opt.flags == nil then

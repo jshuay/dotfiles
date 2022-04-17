@@ -106,14 +106,19 @@ packer.startup(function(use)
         config = config('telescope')
     })
 
-    -- use({
-    --     'vimwiki/vimwiki',
-    --     config = config('vimwiki')
-    -- })
+    use({
+        'vimwiki/vimwiki',
+        config = config('vimwiki')
+    })
 
     use({
         'nvim-lualine/lualine.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
         config = config('lualine')
+    })
+
+    use({
+        'mfussenegger/nvim-jdtls',
+        config = config('jdtls')
     })
 end)

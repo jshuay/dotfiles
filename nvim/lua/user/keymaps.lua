@@ -22,10 +22,10 @@ map('n', '<leader>j', '<C-w><C-j>')
 map('n', '<leader>k', '<C-w><C-k>')
 
 -- resize windows
-map('n', '<C-Up>', ':vertical resize +5<CR>')
-map('n', '<C-Down>', ':vertical resize -5<CR>')
-map('n', '<C-Right>', ':resize +5<CR>')
-map('n', '<C-Left>', ':resize -5<CR>')
+map('n', '<C-Right>', ':vertical resize +5<CR>')
+map('n', '<C-Left>', ':vertical resize -5<CR>')
+map('n', '<C-Up>', ':resize +5<CR>')
+map('n', '<C-Down>', ':resize -5<CR>')
 
 -- toggle between last 2 buffers
 map('n', '<leader><leader>', '<C-^>')

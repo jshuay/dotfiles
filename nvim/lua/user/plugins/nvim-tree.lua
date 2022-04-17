@@ -1,7 +1,6 @@
 -- For Windows, download a font from Nerd Fonts
 -- https://github.com/kyazdani42/nvim-web-devicons/issues/76#issuecomment-998656272
-
-vim.g.nvim_tree_indent_markers = 1
+--
 vim.g.nvim_tree_highlight_opened_files = 1
 -- vim.g.nvim_tree_group_empty = 1
 
@@ -47,18 +46,28 @@ require('nvim-tree').setup({
     },
     actions = {
         open_file = {
-            quit_on_open = true
+            -- quit_on_open = true
+            resize_window = true
+        }
+    },
+    renderer = {
+        indent_markers = {
+            enable = true
+        }
+    },
+    filters = {
+        custom = {
         }
     }
 })
 
 local map = require('lib.keymap').keymap
 
-map('n', '<leader>n', ':NvimTreeFindFileToggle<CR>:NvimTreeResize 25<CR>')
+map('n', '<leader>n', ':NvimTreeFindFileToggle<CR>:NvimTreeResize 35<CR>')
 
 vim.cmd([[
     augroup NvimTreeKeymap
         autocmd!
-        autocmd FileType NvimTree nmap <silent><buffer> <leader><leader> :NvimTreeFindFileToggle<CR>:NvimTreeResize 25<CR>
+        autocmd FileType NvimTree nmap <silent><buffer> <leader><leader> :NvimTreeFindFileToggle<CR>:NvimTreeResize 35<CR>
     augroup end
 ]])

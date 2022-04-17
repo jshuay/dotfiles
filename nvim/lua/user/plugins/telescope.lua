@@ -38,6 +38,7 @@ telescope.setup({
 
         },
         sorting_strategy = 'ascending',
+        scroll_strategy = 'limit',
         layout_strategy = 'vertical',
         layout_config = {
             scroll_speed = 4,
@@ -56,7 +57,7 @@ telescope.setup({
                 prompt_position = 'top'
             }
         },
-        file_ignore_patterns = { '.git/', '.DS_Store', 'Cargo.lock' }
+        file_ignore_patterns = { '.git/', '.DS_Store', 'Cargo.lock', 'package%-lock.json' }
     },
     pickers = {
         find_files = {
