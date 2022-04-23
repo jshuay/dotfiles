@@ -6,10 +6,10 @@ map('n', ' ', '<Nop>')
 
 map('n', '<leader><CR>', ':source ~/.config/nvim/init.lua<CR>', { silent = false })
 
-map('', '<ScrollWheelUp>', 'k')
-map('', '<ScrollWheelDown>', 'j')
-map('i', '<ScrollWheelUp>', '<Up>')
-map('i', '<ScrollWheelDown>', '<Down>')
+-- map('', '<ScrollWheelUp>', 'k')
+-- map('', '<ScrollWheelDown>', 'j')
+-- map('i', '<ScrollWheelUp>', '<Up>')
+-- map('i', '<ScrollWheelDown>', '<Down>')
 
 -- shortcuts for copy
 map('v', '<leader>c', '"*y')

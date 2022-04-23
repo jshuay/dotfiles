@@ -1,4 +1,9 @@
-require('lualine').setup()
+local lualine_status, lualine = pcall(require, 'lualine')
+if not lualine_status then
+    return
+end
+
+lualine.setup()
 
 local buffer_info = function()
     local buffer_count = 0
@@ -11,20 +16,25 @@ local buffer_info = function()
     return buffer_count
 end
 
-local git_blame = require('gitblame')
-local git_blame_msg = function()
-    local msg = git_blame.get_current_blame_text()
-    if string.len(msg) <= 47 then
-        return msg
+local gitblame_status, gitblame = pcall(require, 'gitblame')
+
+local git_blame_msg = '';
+local git_blame_cond = false;
+if gitblame_status then
+    git_blame_msg = function()
+        local msg = gitblame.get_current_blame_text()
+        if string.len(msg) <= 47 then
+            return msg
+        end
+        return string.sub(msg, 1, 47) .. '...'
     end
-    return string.sub(msg, 1, 47) .. '...'
-end
-local git_blame_cond = function()
-    return vim.g.gitblame_enabled == 1 and git_blame.is_blame_text_available() and
-        git_blame.get_current_blame_text() ~= '  Not Committed Yet'
+    git_blame_cond = function()
+        return vim.g.gitblame_enabled == 1 and gitblame.is_blame_text_available() and
+            gitblame.get_current_blame_text() ~= '  Not Committed Yet'
+    end
 end
 
-require('lualine').setup {
+lualine.setup {
     options = {
         disabled_filetypes = { 'NvimTree' }
     },

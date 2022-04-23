@@ -1,4 +1,9 @@
-require('neoscroll').setup()
+local status, neoscroll = pcall(require, 'neoscroll')
+if not status then
+    return
+end
+
+neoscroll.setup()
 
 require('neoscroll.config').set_mappings({
     ['<C-u>'] = { 'scroll', { '-vim.wo.scroll', 'true', '50' } },

@@ -1,3 +1,8 @@
+local status, lsp_installer = pcall(require, 'nvim-lsp-installer')
+if not status then
+    return
+end
+
 local map = require('lib.keymap').keymap
 
 map('n', '<leader>dd', ':lua vim.diagnostic.open_float()<CR>')
@@ -16,7 +21,7 @@ vim.diagnostic.config({
         border = 'rounded',
         format = function(diagnostic)
             if diagnostic.user_data ~= nil and diagnostic.user_data.lsp.code ~= nil then
-                return string.format("%s: %s", diagnostic.user_data.lsp.code, diagnostic.message)
+                return string.format('%s: %s', diagnostic.user_data.lsp.code, diagnostic.message)
             end
             return diagnostic.message
         end
@@ -50,7 +55,6 @@ for _,opt in pairs(opts) do
     opt.flags.debounce_text_changes = 150
 end
 
-local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(function(server)
     if opts[server.name] then
         server:setup(opts[server.name])

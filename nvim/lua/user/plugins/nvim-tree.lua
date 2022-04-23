@@ -1,3 +1,8 @@
+local status, nvim_tree = pcall(require, 'nvim-tree')
+if not status then
+    return
+end
+
 -- For Windows, download a font from Nerd Fonts
 -- https://github.com/kyazdani42/nvim-web-devicons/issues/76#issuecomment-998656272
 --
@@ -5,23 +10,23 @@ vim.g.nvim_tree_highlight_opened_files = 1
 -- vim.g.nvim_tree_group_empty = 1
 
 vim.g.nvim_tree_icons = {
-    default = "",
-    symlink = "",
+    default = '',
+    symlink = '',
     git = {
-        unstaged = "ﱤ",
-        staged = "ﱣ",
-        unmerged = "",
-        renamed = "➜",
-        deleted = "",
-        untracked = "◌",
-        ignored = ""
+        unstaged = 'ﱤ',
+        staged = 'ﱣ',
+        unmerged = '',
+        renamed = '➜',
+        deleted = '',
+        untracked = '◌',
+        ignored = ''
     },
     folder = {
-        default = "",
-        open = "",
-        empty = "",
-        empty_open = "",
-        symlink = "",
+        default = '',
+        open = '',
+        empty = '',
+        empty_open = '',
+        symlink = '',
     },
 }
 
@@ -34,7 +39,7 @@ vim.g.nvim_tree_show_icons = {
 
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 
-require('nvim-tree').setup({
+nvim_tree.setup({
     git = { ignore = false },
     view = {
         mappings = {

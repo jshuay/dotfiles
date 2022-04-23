@@ -17,7 +17,12 @@ M.on_attach = function(client, bufnr)
     vim.cmd('command! Format execute "lua vim.lsp.buf.formatting()"')
 end
 
-M.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-M.capabilities.textDocument.completion.completionItem.snippetSupport = false
+local status, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if not status then
+    M.capabilities = {}
+else
+    M.capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    M.capabilities.textDocument.completion.completionItem.snippetSupport = false
+end
 
 return M

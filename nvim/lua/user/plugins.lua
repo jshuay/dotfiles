@@ -135,4 +135,8 @@ packer.startup(function(use)
         branch = 'main',
         config = config('oscyank')
     })
+
+    if PACKER_BOOTSTRAP then
+        packer.sync()
+    end
 end)

@@ -1,4 +1,7 @@
-local cmp = require('cmp')
+local cmp_status, cmp = pcall(require, 'cmp')
+if not cmp_status then
+    return
+end
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,longest,preview'
@@ -22,7 +25,11 @@ cmp.setup({
     },
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            local luasnip_status, luasnip = pcall(require, 'luasnip')
+            if not luasnip_status then
+                return
+            end
+            luasnip.lsp_expand(args.body)
         end
     },
     mapping = {

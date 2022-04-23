@@ -1,9 +1,12 @@
-local telescope = require('telescope')
+local status, telescope = pcall(require, 'telescope')
+if not status then
+    return
+end
 
 local actions = require('telescope.actions')
 
 -- Prevent big files from showing in previewer
-local previewers = require("telescope.previewers")
+local previewers = require('telescope.previewers')
 local preview_maker = function(filepath, bufnr, opts)
     opts = opts or {}
 
