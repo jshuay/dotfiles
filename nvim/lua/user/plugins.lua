@@ -112,13 +112,27 @@ packer.startup(function(use)
     })
 
     use({
+        'f-person/git-blame.nvim',
+        config = config('git-blame')
+    })
+
+    use({
         'nvim-lualine/lualine.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+            'f-person/git-blame.nvim',
+        },
         config = config('lualine')
     })
 
     use({
         'mfussenegger/nvim-jdtls',
         config = config('jdtls')
+    })
+
+    use({
+        'ojroques/vim-oscyank',
+        branch = 'main',
+        config = config('oscyank')
     })
 end)

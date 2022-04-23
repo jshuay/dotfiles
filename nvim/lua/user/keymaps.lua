@@ -13,6 +13,7 @@ map('i', '<ScrollWheelDown>', '<Down>')
 
 -- shortcuts for copy
 map('v', '<leader>c', '"*y')
+map('v', '<leader>C', '"*Y')
 map('v', '<RightMouse>', '"*y')
 
 -- move between windows

@@ -46,7 +46,7 @@ require('nvim-tree').setup({
     },
     actions = {
         open_file = {
-            -- quit_on_open = true
+            quit_on_open = true,
             resize_window = true
         }
     },
@@ -69,5 +69,6 @@ vim.cmd([[
     augroup NvimTreeKeymap
         autocmd!
         autocmd FileType NvimTree nmap <silent><buffer> <leader><leader> :NvimTreeFindFileToggle<CR>:NvimTreeResize 35<CR>
+        autocmd FileType NvimTree nmap <silent><buffer> <leader>cd <C-]>
     augroup end
 ]])
