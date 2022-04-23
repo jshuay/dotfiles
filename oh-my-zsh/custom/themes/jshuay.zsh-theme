@@ -33,6 +33,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 #setopt PROMPT_SUBST
 
 # Colors
+# run `spectrum_ls` to see colors
 primary_color=%{$FG[124]%}
 secondary_color=%{$FG[102]%}
 ok_status_color=%{$FG[034]%}

@@ -1,3 +1,6 @@
+vim.g.oscyank_max_length = 100000
+vim.g.oscyank_silent = true
+
 vim.cmd([[
     augroup YankToSystemClipboard
         autocmd!
