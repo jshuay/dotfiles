@@ -34,7 +34,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 # Colors
 # run `spectrum_ls` to see colors
-primary_color=%{$FG[124]%}
+primary_color=%{$FG[015]%} # gruvbox white
 secondary_color=%{$FG[102]%}
 ok_status_color=%{$FG[034]%}
 error_status_color=%{$FG[009]%}
