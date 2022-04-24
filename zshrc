@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="jshuay"
+ZSH_THEME="custom"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -100,38 +100,39 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# CUSTOM - START
-
-## Aliases
-alias vi=~/.toolbox/nvim/nvim.appimage
-alias vim=~/.toolbox/nvim/nvim.appimage
-
-alias python=python3
-alias pip=pip3
-
-# alias wiki="vi --cmd 'cd ~/vimwiki/' ~/vimwiki/index.md"
-# alias zk="vi --cmd 'cd ~/vimwiki/' -c ':VimwikiMakeDiaryNote'"
-
-alias open="explorer.exe"
-
-alias wp="cd ~/workplace/"
-
-alias viconf="vi ~/.config/nvim"
+#=================================================
+# Common Configs
+#=================================================
 
 ## Search history (https://superuser.com/a/1061539)
 hgrep() { fc -lim "*$@*" 1 }
 
+#-------------------------------------------------
+# Aliases
+#-------------------------------------------------
+
+alias zshrc="vi ~/.zshrc -c ':104'"
+alias viconf="vi ~/.config/nvim"
+
+#-------------------------------------------------
+# Exports
+#-------------------------------------------------
+
 ## ls Color (https://geoff.greer.fm/lscolors/)
 export LS_COLORS="di=1;36:ln=1;35:so=1;32:pi=1;33:ex=1;31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=34;43"
-    # BSD
-    #export CLICOLOR=1
-    #export LSCOLORS=GxFxCxDxBxegedabagaced
+## BSD
+#export CLICOLOR=1
+#export LSCOLORS=GxFxCxDxBxegedabagaced
 
-## Exports
+#=================================================
+# Local Configs
+#=================================================
 
-export PATH=$PATH:~/.toolbox/bin/
+source $ZSH/custom/.localrc
 
-# CUSTOM - END
+#=================================================
+# Auto Added
+#=================================================
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
