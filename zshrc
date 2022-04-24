@@ -72,6 +72,10 @@ ZSH_THEME="custom"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(zsh-syntax-highlighting)
 
+# Got insecure completion-dependent directory errors after installing brew.
+# This flag will hide the errors on new terminal sessions
+ZSH_DISABLE_COMPFIX="true"
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
