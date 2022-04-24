@@ -1,3 +1,6 @@
+[user]
+    email = ""
+    name = ""
 [init]
     defaultBranch = mainline
 [core]
