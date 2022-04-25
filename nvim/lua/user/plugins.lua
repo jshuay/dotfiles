@@ -106,10 +106,10 @@ packer.startup(function(use)
         config = config('telescope')
     })
 
-    use({
-        'vimwiki/vimwiki',
-        config = config('vimwiki')
-    })
+    -- use({
+    --     'vimwiki/vimwiki',
+    --     config = config('vimwiki')
+    -- })
 
     use({
         'f-person/git-blame.nvim',
