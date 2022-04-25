@@ -132,7 +132,7 @@ export LS_COLORS="di=1;36:ln=1;35:so=1;32:pi=1;33:ex=1;31:bd=34;46:cd=34;43:su=3
 # Local Configs
 #=================================================
 
-source $ZSH/custom/.localrc
+source $ZSH/custom/rc/localrc
 
 #=================================================
 # Auto Added
