@@ -20,7 +20,13 @@ vim.o.incsearch = true
 vim.o.hlsearch = false
 
 vim.o.backup = true
-vim.o.backupdir = vim.fn.stdpath('data') .. '/backup/'
+vim.o.backupdir = vim.fn.stdpath('data') .. '/backup//'
+--vim.cmd([[
+    -- augroup UpdateBackupExt
+        -- autocmd!
+        -- autocmd BufWritePre * let &bex = strftime('.backup-%Y-%m-%dT%T~')
+    -- augroup end
+-- ]])
 
 vim.o.ruler = true
 vim.o.wrap = false
@@ -56,3 +62,5 @@ vim.o.showmode = false
 vim.o.termguicolors = true
 
 vim.o.background = 'dark'
+
+vim.o.undofile = true
