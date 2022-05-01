@@ -136,6 +136,11 @@ packer.startup(function(use)
         config = config('oscyank')
     })
 
+    use({
+        'rhysd/git-messenger.vim',
+        config = config('git-messenger')
+    })
+
     if PACKER_BOOTSTRAP then
         packer.sync()
     end
