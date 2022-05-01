@@ -1,6 +1,7 @@
 local M = {}
 
 local bmap = require('lib.keymap').buf_keymap
+local map = require('lib.keymap').keymap
 
 M.on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -16,6 +17,9 @@ M.on_attach = function(client, bufnr)
 
     vim.cmd('command! Format execute "lua vim.lsp.buf.formatting()"')
 end
+
+map('n', '<leader>rr', '<cmd>lua vim.lsp.buf.document_highlight()<CR>')
+map('n', '<leader>rc', '<cmd>lua vim.lsp.buf.clear_references()<CR>')
 
 local status, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not status then
