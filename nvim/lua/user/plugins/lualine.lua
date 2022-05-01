@@ -13,7 +13,7 @@ local buffer_info = function()
             buffer_count = buffer_count + 1
         end
     end
-    return buffer_count
+    return buffer_count .. ' B'
 end
 
 local gitblame_status, gitblame = pcall(require, 'gitblame')
@@ -32,6 +32,14 @@ if gitblame_status then
         return vim.g.gitblame_enabled == 1 and gitblame.is_blame_text_available() and
             gitblame.get_current_blame_text() ~= '  Not Committed Yet'
     end
+end
+
+local col_location = function()
+    return vim.fn.col('.') .. ':' .. vim.fn.col('$') .. ' C'
+end
+
+local line_location = function()
+    return vim.fn.line('.') .. ':' .. vim.fn.line('$') .. ' L'
 end
 
 lualine.setup {
@@ -53,7 +61,7 @@ lualine.setup {
         },
         lualine_x = {
             -- 'fileformat',
-            { git_blame_msg, cond = git_blame_cond }
+            -- { git_blame_msg, cond = git_blame_cond }
         },
         lualine_y = {
             'filetype'
@@ -61,7 +69,9 @@ lualine.setup {
         },
         lualine_z = {
             { buffer_info },
-            'location',
+            { col_location },
+            { line_location },
+            -- 'location',
             'progress',
         },
     },

@@ -64,3 +64,5 @@ vim.o.termguicolors = true
 vim.o.background = 'dark'
 
 vim.o.undofile = true
+
+vim.o.showcmd = false
