@@ -13,5 +13,7 @@ vim.cmd([[
         autocmd!
         autocmd FileType gitmessengerpopup set concealcursor=nv
         autocmd FileType gitmessengerpopup nmap <buffer> <esc> q
+        autocmd FileType gitmessengerpopup nmap <buffer> i O
+        autocmd FileType gitmessengerpopup hi gitmessengerEmail ctermfg=214 guifg=#fabd2f
     augroup end
 ]])
