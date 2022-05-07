@@ -46,6 +46,12 @@ opts[rust.server] = rust.opts
 local typescript = require('user.plugins.lsp.typescript')
 opts[typescript.server] = typescript.opts
 
+local json = require('user.plugins.lsp.json')
+opts[json.server] = json.opts
+
+local sh = require('user.plugins.lsp.sh')
+opts[sh.server] = sh.opts
+
 -- TODO: Remove this in neovim 0.7.0+
 for _,opt in pairs(opts) do
     if opt.flags == nil then
