@@ -1,4 +1,5 @@
 vim.g.gruvbox_invert_selection = 0
+vim.g.gruvbox_bold = 0
 
 vim.cmd([[
     augroup GruvboxOverrides
