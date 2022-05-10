@@ -59,9 +59,11 @@ packer.startup(function(use)
     })
 
     use({
-        'neovim/nvim-lspconfig',
         'williamboman/nvim-lsp-installer',
-        config = config('lspconfig')
+        {
+            'neovim/nvim-lspconfig',
+            config = config('lspconfig')
+        }
     })
 
     use({

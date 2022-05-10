@@ -42,7 +42,7 @@ local line_location = function()
     return vim.fn.line('.') .. ':' .. vim.fn.line('$') .. ' L'
 end
 
-lualine.setup {
+lualine.setup ({
     options = {
         disabled_filetypes = { 'NvimTree' }
     },
@@ -75,5 +75,5 @@ lualine.setup {
             'progress',
         },
     },
-}
+})
 

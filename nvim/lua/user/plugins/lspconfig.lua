@@ -1,5 +1,10 @@
-local status, lsp_installer = pcall(require, 'nvim-lsp-installer')
-if not status then
+local lsp_installer_status, lsp_installer = pcall(require, 'nvim-lsp-installer')
+if not lsp_installer_status then
+    return
+end
+
+local lspconfig_status, lspconfig = pcall(require, 'lspconfig')
+if not lspconfig_status then
     return
 end
 
@@ -28,43 +33,43 @@ vim.diagnostic.config({
     }
 })
 
-local shared_configs = require('user.plugins.lsp.shared-configs')
-
-local opts = {
-    default = {
-        on_attach = shared_configs.on_attach,
-        capabilities = shared_configs.capabilities
-    }
-}
+local servers = {}
 
 local lua = require('user.plugins.lsp.lua')
-opts[lua.server] = lua.opts
+servers[lua.server] = lua.opts
 
 local rust = require('user.plugins.lsp.rust')
-opts[rust.server] = rust.opts
+servers[rust.server] = rust.opts
 
 local typescript = require('user.plugins.lsp.typescript')
-opts[typescript.server] = typescript.opts
+servers[typescript.server] = typescript.opts
 
 local json = require('user.plugins.lsp.json')
-opts[json.server] = json.opts
+servers[json.server] = json.opts
 
 local sh = require('user.plugins.lsp.sh')
-opts[sh.server] = sh.opts
+servers[sh.server] = sh.opts
 
--- TODO: Remove this in neovim 0.7.0+
-for _,opt in pairs(opts) do
-    if opt.flags == nil then
-        opt.flags = {}
-    end
-    -- This will be default in neovim 0.7.0+
-    opt.flags.debounce_text_changes = 150
+lsp_installer.setup({
+    -- automatic_installation = true
+})
+
+for server,opts in pairs(servers) do
+    lspconfig[server].setup({
+        on_attach = opts.on_attach,
+        capabilities = opts.capabilities,
+        settings = opts.settings,
+        flags = {
+            -- This will be default in neovim 0.7.0+
+            debounce_text_changes = 150
+        }
+    })
 end
 
-lsp_installer.on_server_ready(function(server)
-    if opts[server.name] then
-        server:setup(opts[server.name])
-        return
-    end
-    server:setup(opts.default)
-end)
+-- lsp_installer.on_server_ready(function(server)
+--     if opts[server.name] then
+--         server:setup(opts[server.name])
+--         return
+--     end
+--     server:setup(opts.default)
+-- end)
