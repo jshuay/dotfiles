@@ -4,6 +4,7 @@ if not status then
 end
 
 local actions = require('telescope.actions')
+local action_state = require('telescope.actions.state')
 
 -- Prevent big files from showing in previewer
 local previewers = require('telescope.previewers')
@@ -23,6 +24,15 @@ local preview_maker = function(filepath, bufnr, opts)
     end)
 end
 
+local quick_fix_action = function(prompt_bufnr)
+    if #action_state.get_current_picker(prompt_bufnr):get_multi_selection() == 0 then
+        actions.send_to_qflist(prompt_bufnr)
+    else
+        actions.send_selected_to_qflist(prompt_bufnr)
+    end
+    actions.open_qflist(prompt_bufnr)
+end
+
 telescope.setup({
     defaults = {
         path_display = { truncate = 1 },
@@ -37,6 +47,8 @@ telescope.setup({
             n = {
                 ['<C-j>'] = actions.preview_scrolling_down,
                 ['<C-k>'] = actions.preview_scrolling_up,
+                ['<Tab>'] = actions.toggle_selection,
+                ['<C-q>'] = quick_fix_action,
             }
 
         },
@@ -87,7 +99,8 @@ local map = require('lib.keymap').keymap
 map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<CR>')
 map('n', '<leader>fF', '<cmd>lua require("telescope.builtin").find_files({ no_ignore = true, prompt_title = "All Files" })<CR>')
 
-map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
+map('n', '<leader>fg', '<cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw()<CR>')
+-- map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
 
 map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<CR>')
 
