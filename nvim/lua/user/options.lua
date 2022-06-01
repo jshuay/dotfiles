@@ -30,7 +30,7 @@ vim.o.backupdir = vim.fn.stdpath('data') .. '/backup//'
 
 vim.o.ruler = true
 vim.o.wrap = false
-vim.o.colorcolumn = '120'
+-- vim.o.colorcolumn = '120'
 
 -- Allows moving cursor with mouse
 vim.o.mouse = 'a'
