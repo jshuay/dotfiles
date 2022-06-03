@@ -113,16 +113,16 @@ packer.startup(function(use)
     --     config = config('vimwiki')
     -- })
 
-    use({
-        'f-person/git-blame.nvim',
-        config = config('git-blame')
-    })
+    -- use({
+    --     'f-person/git-blame.nvim',
+    --     config = config('git-blame')
+    -- })
 
     use({
         'nvim-lualine/lualine.nvim',
         requires = {
             'kyazdani42/nvim-web-devicons',
-            'f-person/git-blame.nvim',
+            -- 'f-person/git-blame.nvim',
         },
         config = config('lualine')
     })

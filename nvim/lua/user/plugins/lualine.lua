@@ -16,23 +16,23 @@ local buffer_info = function()
     return buffer_count .. ' B'
 end
 
-local gitblame_status, gitblame = pcall(require, 'gitblame')
+-- local gitblame_status, gitblame = pcall(require, 'gitblame')
 
-local git_blame_msg = '';
-local git_blame_cond = false;
-if gitblame_status then
-    git_blame_msg = function()
-        local msg = gitblame.get_current_blame_text()
-        if string.len(msg) <= 47 then
-            return msg
-        end
-        return string.sub(msg, 1, 47) .. '...'
-    end
-    git_blame_cond = function()
-        return vim.g.gitblame_enabled == 1 and gitblame.is_blame_text_available() and
-            gitblame.get_current_blame_text() ~= '  Not Committed Yet'
-    end
-end
+-- local git_blame_msg = '';
+-- local git_blame_cond = false;
+-- if gitblame_status then
+--     git_blame_msg = function()
+--         local msg = gitblame.get_current_blame_text()
+--         if string.len(msg) <= 47 then
+--             return msg
+--         end
+--         return string.sub(msg, 1, 47) .. '...'
+--     end
+--     git_blame_cond = function()
+--         return vim.g.gitblame_enabled == 1 and gitblame.is_blame_text_available() and
+--             gitblame.get_current_blame_text() ~= '  Not Committed Yet'
+--     end
+-- end
 
 local col_location = function()
     return vim.fn.col('.') .. ':' .. vim.fn.col('$') .. ' C'
