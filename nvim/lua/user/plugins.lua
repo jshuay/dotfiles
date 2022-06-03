@@ -143,6 +143,10 @@ packer.startup(function(use)
         config = config('git-messenger')
     })
 
+    use({
+        'stevearc/aerial.nvim',
+        config = config('aerial')
+    })
     if PACKER_BOOTSTRAP then
         packer.sync()
     end

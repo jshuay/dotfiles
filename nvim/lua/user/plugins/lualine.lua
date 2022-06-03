@@ -44,7 +44,7 @@ end
 
 lualine.setup ({
     options = {
-        disabled_filetypes = { 'NvimTree' }
+        disabled_filetypes = { 'NvimTree', 'aerial' }
     },
     sections = {
         lualine_a = {
