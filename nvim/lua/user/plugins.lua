@@ -147,6 +147,12 @@ packer.startup(function(use)
         'stevearc/aerial.nvim',
         config = config('aerial')
     })
+
+    use({
+        'stevearc/stickybuf.nvim',
+        config = config('stickybuf')
+    })
+
     if PACKER_BOOTSTRAP then
         packer.sync()
     end
