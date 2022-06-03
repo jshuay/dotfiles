@@ -3,12 +3,13 @@ if not cmp_status then
     return
 end
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,longest,preview'
-
 cmp.setup({
     experimental = {
         ghost_text = true
+    },
+    completion = {
+        -- Set completeopt to have a better completion experience
+        completeopt = 'menuone,longest,preview'
     },
     formatting = {
         -- fields = { 'abbr', 'kind' },
