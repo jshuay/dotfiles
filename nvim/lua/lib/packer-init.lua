@@ -29,11 +29,12 @@ packer.init({
 })
 
 -- Triggers sourcing and resyncing when changes are made to plugins.lua
-vim.cmd([[
-    augroup PackerUserConfig
-        autocmd!
-        autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-    augroup end
-]])
+vim.api.nvim_create_autocmd('BufWritePost', {
+    group = vim.api.nvim_create_augroup('PackerUserConfig', { clear = true }),
+    pattern = { 'plugins.lua' },
+    callback = function()
+        vim.cmd('source <afile> | PackerCompile')
+    end
+})
 
 return packer

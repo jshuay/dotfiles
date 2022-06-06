@@ -1,13 +1,12 @@
 vim.g.gruvbox_invert_selection = 0
 vim.g.gruvbox_bold = 0
 
-vim.cmd([[
-    augroup GruvboxOverrides
-        autocmd!
-        autocmd ColorScheme gruvbox highlight LspReferenceText ctermbg=239 guibg=#504945
-        autocmd ColorScheme gruvbox highlight LspReferenceRead ctermbg=239 guibg=#504945
-        autocmd ColorScheme gruvbox highlight LspReferenceWrite ctermbg=239 guibg=#504945
-    augroup end
-
-    colorscheme gruvbox
-]])
+vim.api.nvim_create_autocmd('ColorScheme', {
+    group = vim.api.nvim_create_augroup('GruvboxOverrides', { clear = true }),
+    pattern = { 'gruvbox' },
+    callback = function()
+        vim.api.nvim_set_hl(0, 'LspReferenceText', { bg = '#504945', ctermbg = 239 })
+        vim.api.nvim_set_hl(0, 'LspReferenceRead', { bg = '#504945', ctermbg = 239 })
+        vim.api.nvim_set_hl(0, 'LspReferenceWrite', { bg = '#504945', ctermbg = 239 })
+    end
+})

@@ -1,9 +1,12 @@
 vim.g.oscyank_max_length = 100000
 vim.g.oscyank_silent = true
 
-vim.cmd([[
-    augroup YankToSystemClipboard
-        autocmd!
-        autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '*' | execute 'OSCYankReg "' | endif
-    augroup end
-]])
+vim.api.nvim_create_autocmd('TextYankPost', {
+    group = vim.api.nvim_create_augroup('YankToSystemClipboard', { clear = true }),
+    pattern = { '*' },
+    callback = function()
+        if vim.v.event.operator == 'y' and vim.v.event.regname == '*' then
+            vim.fn.execute('OSCYankReg "')
+        end
+    end
+})

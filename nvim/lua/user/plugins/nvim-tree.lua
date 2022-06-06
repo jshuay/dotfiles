@@ -67,12 +67,15 @@ nvim_tree.setup({
 
 local map = require('lib.keymap').keymap
 
-map('n', '<leader>n', ':NvimTreeFindFileToggle<CR>:NvimTreeResize 50<CR>')
+map('n', '<leader>n', '<cmd>NvimTreeFindFileToggle<CR>:NvimTreeResize 50<CR>')
 
-vim.cmd([[
-    augroup NvimTreeKeymap
-        autocmd!
-        autocmd FileType NvimTree nmap <silent><buffer> <leader><leader> :NvimTreeFindFileToggle<CR>
-        autocmd FileType NvimTree nmap <silent><buffer> <leader>cd <C-]>
-    augroup end
-]])
+vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('NvimTreeKeymap', { clear = true }),
+    pattern = { 'NvimTree' },
+    callback = function(args)
+        local bmap = require('lib.keymap').buf_keymap
+
+        bmap(args.buf, 'n', '<leader><leader>', '<cmd>NvimTreeFindFileToggle<CR>')
+        bmap(args.buf, 'n', '<leader>cd', '<C-]>', { noremap = false })
+    end
+})

@@ -77,9 +77,8 @@ JDTLS_SETUP = function()
     jdtls.start_or_attach(config)
 end
 
-vim.cmd([[
-    augroup JavaJdtlsLspSetup
-        autocmd!
-        autocmd FileType java luado JDTLS_SETUP()
-    augroup end
-]])
+vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('JavaJdtlsLspSetup', { clear = true }),
+    pattern = { 'java' },
+    callback = JDTLS_SETUP
+})

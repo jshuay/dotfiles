@@ -8,12 +8,14 @@ local map = require('lib.keymap').keymap
 
 map('n', '<leader>gb', '<Plug>(git-messenger)', { noremap = false })
 
-vim.cmd([[
-    augroup GitMessengerOverrides
-        autocmd!
-        autocmd FileType gitmessengerpopup set concealcursor=nv
-        autocmd FileType gitmessengerpopup nmap <buffer> <esc> q
-        autocmd FileType gitmessengerpopup nmap <buffer> i O
-        autocmd FileType gitmessengerpopup hi gitmessengerEmail ctermfg=214 guifg=#fabd2f
-    augroup end
-]])
+vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('GitMessengerOverrides', { clear = true }),
+    pattern = { 'gitmessengerpopup' },
+    callback = function(args)
+        vim.wo.concealcursor = 'nv'
+        local bmap = require('lib.keymap').buf_keymap
+        bmap(args.buf, 'n', '<esc>', 'q', { noremap = false })
+        bmap(args.buf, 'n', 'i', 'O', { noremap = false })
+        vim.api.nvim_set_hl(0, 'gitmessengerEmail', { fg = '#fabd2f', ctermfg = 214 })
+    end
+})
