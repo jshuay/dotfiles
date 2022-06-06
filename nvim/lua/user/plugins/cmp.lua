@@ -3,13 +3,33 @@ if not cmp_status then
     return
 end
 
+local select_next_item = cmp.mapping(
+    function(fallback)
+        if cmp.visible() then
+            cmp.select_next_item()
+            return
+        end
+        fallback()
+    end,
+    { 'i', 's' }
+)
+local select_prev_item = cmp.mapping(
+    function(fallback)
+        if cmp.visible() then
+            cmp.select_prev_item()
+            return
+        end
+        fallback()
+    end,
+    { 'i', 's' }
+)
+
 cmp.setup({
     experimental = {
         ghost_text = true
     },
     completion = {
-        -- Set completeopt to have a better completion experience
-        completeopt = 'menuone,longest,preview'
+        completeopt = 'menuone,longest,preview,noselect'
     },
     formatting = {
         -- fields = { 'abbr', 'kind' },
@@ -34,22 +54,14 @@ cmp.setup({
         end
     },
     mapping = {
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-                return
-            end
-            fallback()
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-                return
-            end
-            fallback()
-        end, { 'i', 's' }),
+        ['<Tab>'] = select_next_item,
+        ['<Down>'] = select_next_item,
+        ['<S-Tab>'] = select_prev_item,
+        ['<Up>'] = select_prev_item,
         ['<C-j>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Down>'] = cmp.mapping.scroll_docs(4),
         ['<C-k>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-Up>'] = cmp.mapping.scroll_docs(-4),
         ['<C-Space>'] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.abort()
