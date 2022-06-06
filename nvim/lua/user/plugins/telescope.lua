@@ -30,7 +30,8 @@ local quick_fix_action = function(prompt_bufnr)
     else
         actions.send_selected_to_qflist(prompt_bufnr)
     end
-    actions.open_qflist(prompt_bufnr)
+    -- actions.open_qflist(prompt_bufnr)
+    vim.cmd('belowright copen')
 end
 
 telescope.setup({
@@ -43,6 +44,7 @@ telescope.setup({
                 ['<S-Tab>'] = actions.move_selection_previous,
                 ['<C-j>'] = actions.preview_scrolling_down,
                 ['<C-k>'] = actions.preview_scrolling_up,
+                ['<C-q>'] = quick_fix_action,
             },
             n = {
                 ['<C-j>'] = actions.preview_scrolling_down,
