@@ -50,6 +50,9 @@ servers[json.server] = json.opts
 local sh = require('user.plugins.lsp.sh')
 servers[sh.server] = sh.opts
 
+local python = require('user.plugins.lsp.python')
+servers[python.server] = python.opts
+
 lsp_installer.setup({
     -- automatic_installation = true
 })
