@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- Prevents wonky behavior when navigating away from buffer that is not saved.
-vim.api.nvim_create_autocmd('BufLeave', {
+vim.api.nvim_create_autocmd('BufWinLeave', {
     group = vim.api.nvim_create_augroup('AerialAutoClose', { clear = true }),
     pattern = { '*' },
     callback = function()
