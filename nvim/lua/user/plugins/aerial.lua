@@ -4,11 +4,25 @@ if not status then
 end
 
 aerial.setup({
+    backends = { 'lsp', 'treesitter', 'markdown' },
     default_bindings = false,
     show_guides = true,
     close_behavior = 'close',
+    filter_kind = {
+        "Class",
+        "Constant",
+        "Constructor",
+        "Enum",
+        "Function",
+        "Interface",
+        "Module",
+        "Method",
+        "Struct",
+        "Variable"
+    },
     open_automatic = function(bufnr)
-        return aerial.num_symbols(bufnr) > 0 and not aerial.was_closed()
+        return aerial.num_symbols(bufnr) > 0
+        -- return aerial.num_symbols(bufnr) > 0 and not aerial.was_closed()
     end
 })
 
@@ -29,3 +43,15 @@ vim.api.nvim_create_autocmd('FileType', {
         bmap(args.buf, 'n', '<2-LeftMouse>', '<cmd>lua require("aerial").select()<CR>')
     end
 })
+
+-- Prevents wonky behavior when navigating away from buffer that is not saved.
+vim.api.nvim_create_autocmd('BufLeave', {
+    group = vim.api.nvim_create_augroup('AerialAutoClose', { clear = true }),
+    pattern = { '*' },
+    callback = function()
+        if aerial.is_open() then
+            aerial.close()
+        end
+    end
+})
+
