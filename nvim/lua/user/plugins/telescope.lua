@@ -101,7 +101,7 @@ local map = require('lib.keymap').keymap
 map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<CR>')
 map('n', '<leader>fF', '<cmd>lua require("telescope.builtin").find_files({ no_ignore = true, prompt_title = "All Files" })<CR>')
 
-map('n', '<leader>fg', '<cmd>lua require("telescope").extensions.live_grep_raw.live_grep_raw()<CR>')
+map('n', '<leader>fg', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>')
 -- map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
 
 map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<CR>')
