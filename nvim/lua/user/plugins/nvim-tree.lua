@@ -23,6 +23,7 @@ nvim_tree.setup({
         }
     },
     renderer = {
+        add_trailing = true,
         indent_markers = {
             enable = true
         },
@@ -41,12 +42,12 @@ nvim_tree.setup({
                 default = '',
                 symlink = '',
                 git = {
-                    unstaged = 'ﱤ',
-                    staged = 'ﱣ',
+                    unstaged = '',
+                    staged = 'ﰂ',
                     unmerged = '',
                     renamed = '➜',
                     deleted = '',
-                    untracked = '◌',
+                    untracked = '⬚',
                     ignored = ''
                 },
                 folder = {
@@ -77,5 +78,15 @@ vim.api.nvim_create_autocmd('FileType', {
 
         bmap(args.buf, 'n', '<leader><leader>', '<cmd>NvimTreeFindFileToggle<CR>')
         bmap(args.buf, 'n', '<leader>cd', '<C-]>', { noremap = false })
+    end
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('NvimTreeHighlightOverrides', { clear = true }),
+    pattern = { 'NvimTree' },
+    callback = function()
+        vim.api.nvim_set_hl(0, 'NvimTreeExecFile', { fg = '#ebdbb2', ctermfg = 223 })
+        vim.api.nvim_set_hl(0, 'NvimTreeSpecialFile', { fg = '#ebdbb2', ctermfg = 223 })
+        vim.api.nvim_set_hl(0, 'NvimTreeOpenedFile', { fg = '#fabd2f', ctermfg = 214 })
     end
 })
