@@ -6,7 +6,7 @@ end
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 
 nvim_tree.setup({
-    git = { ignore = false },
+    git = { ignore = true },
     view = {
         width = 50,
         mappings = {
@@ -15,6 +15,9 @@ nvim_tree.setup({
                 { key = 'v', cb = tree_cb('vsplit') }
             }
         }
+    },
+    update_focused_file = {
+        enable = true
     },
     actions = {
         open_file = {
