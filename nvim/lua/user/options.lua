@@ -70,3 +70,11 @@ vim.o.showcmd = false
 vim.o.spell = true
 vim.o.spelllang = 'en_us'
 vim.o.spellsuggest = 'best,9'
+
+vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('ColorColsForGit', { clear = true }),
+    pattern = { 'gitcommit' },
+    callback = function()
+        vim.o.colorcolumn = '50,72'
+    end
+})
