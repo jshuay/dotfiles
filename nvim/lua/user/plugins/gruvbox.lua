@@ -8,5 +8,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.api.nvim_set_hl(0, 'LspReferenceText', { bg = '#504945', ctermbg = 239 })
         vim.api.nvim_set_hl(0, 'LspReferenceRead', { bg = '#504945', ctermbg = 239 })
         vim.api.nvim_set_hl(0, 'LspReferenceWrite', { bg = '#504945', ctermbg = 239 })
+
+        vim.api.nvim_set_hl(0, 'NormalFloat', {})
+        vim.api.nvim_set_hl(0, 'FloatBorder', {})
     end
 })
