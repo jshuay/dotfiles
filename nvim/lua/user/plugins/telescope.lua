@@ -60,17 +60,17 @@ telescope.setup({
         layout_config = {
             scroll_speed = 4,
             vertical = {
-                height = 0.9,
+                height = 0.7,
                 preview_cutoff = 1,
                 preview_height = 0.65,
-                width = 0.9,
+                width = 0.7,
                 prompt_position = 'top',
                 mirror = true
             },
             horizontal = {
-                height = 0.9,
+                height = 0.7,
                 preview_cutoff = 1,
-                width = 0.9,
+                width = 0.7,
                 prompt_position = 'top'
             }
         },
@@ -96,6 +96,14 @@ telescope.setup({
 
 -- telescope.load_extension('fzf')
 
+vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('TelescopeHighlightOverrides', { clear = true }),
+    pattern = { 'TelescopePrompt' },
+    callback = function()
+        vim.api.nvim_set_hl(0, 'TelescopePromptCounter', { fg = '#ebdbb2', ctermfg = 223 })
+    end
+})
+
 local map = require('lib.keymap').keymap
 
 map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<CR>')
@@ -104,7 +112,7 @@ map('n', '<leader>fF', '<cmd>lua require("telescope.builtin").find_files({ no_ig
 map('n', '<leader>fg', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>')
 -- map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
 
-map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers()<CR>')
+map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers({ initial_mode = "normal" })<CR>')
 
 map('n', '<leader>/', '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>')
 
