@@ -1,11 +1,12 @@
 [user]
-    email = ""
-    name = ""
+    email = "<REPLACE_EMAIL>"
+    name = "<REPLACE_NAME>"
 [init]
     defaultBranch = mainline
 [core]
     pager = less -FMRiX
     excludesFile = ~/.gitignore
+    editor = "<REPLACE_EDITOR>"
 [push]
     default = simple
 [alias]
