@@ -31,6 +31,7 @@ cmp.setup({
     completion = {
         completeopt = 'menuone,longest,preview,noselect'
     },
+    preselect = cmp.PreselectMode.None,
     formatting = {
         -- fields = { 'abbr', 'kind' },
         format = require('lspkind').cmp_format({
@@ -72,7 +73,12 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = false
-        })
+        }),
+        ['<C-u>'] = cmp.mapping.abort()
+    },
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
