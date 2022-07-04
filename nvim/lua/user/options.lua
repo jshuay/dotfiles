@@ -66,3 +66,7 @@ vim.o.background = 'dark'
 vim.o.undofile = true
 
 vim.o.showcmd = false
+
+vim.o.spell = true
+vim.o.spelllang = 'en_us'
+vim.o.spellsuggest = 'best,9'
