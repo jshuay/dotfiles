@@ -57,17 +57,6 @@ lsp_installer.setup({
     -- automatic_installation = true
 })
 
-local border = {
-      {"╭", "FloatBorder"},
-      {"─", "FloatBorder"},
-      {"╮", "FloatBorder"},
-      {"│", "FloatBorder"},
-      {"╯", "FloatBorder"},
-      {"─", "FloatBorder"},
-      {"╰", "FloatBorder"},
-      {"│", "FloatBorder"},
-}
-
 for server,opts in pairs(servers) do
     lspconfig[server].setup({
         on_attach = opts.on_attach,
@@ -77,10 +66,7 @@ for server,opts in pairs(servers) do
             -- This will be default in neovim 0.7.0+
             debounce_text_changes = 150
         },
-        handlers = {
-            ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
-            ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border }),
-        }
+        handlers = opts.handlers
     })
 end
 

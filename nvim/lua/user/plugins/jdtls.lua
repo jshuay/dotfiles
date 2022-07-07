@@ -64,7 +64,8 @@ JDTLS_SETUP = function()
             bundles = {}
         },
         on_attach = shared_configs.on_attach,
-        capabilities = shared_configs.capabilities
+        capabilities = shared_configs.capabilities,
+        handlers = shared_configs.handlers
     }
 
 

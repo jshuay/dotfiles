@@ -5,6 +5,7 @@ return {
     opts = {
         on_attach = shared_configs.on_attach,
         capabilities = shared_configs.capabilities,
+        handlers = shared_configs.handlers,
         settings = {
             ['rust-analyzer'] = {
                 assist = {
