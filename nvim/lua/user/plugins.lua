@@ -59,6 +59,10 @@ packer.startup(function(use)
     })
 
     use({
+        'nvim-treesitter/playground'
+    })
+
+    use({
         'williamboman/nvim-lsp-installer',
         {
             'neovim/nvim-lspconfig',

@@ -14,6 +14,9 @@ nvim_treesitter_configs.setup({
     }
 })
 
+local map = require('lib.keymap').keymap
+map('n', '<leader>s', '<cmd>TSHighlightCapturesUnderCursor<CR>')
+
 local spellsitter_status, spellsitter = pcall(require, 'spellsitter')
 if not spellsitter_status then
     return
