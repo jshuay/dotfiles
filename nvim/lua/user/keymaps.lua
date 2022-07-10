@@ -29,7 +29,13 @@ map('n', '<C-Up>', ':resize +5<CR>')
 map('n', '<C-Down>', ':resize -5<CR>')
 
 -- toggle between last 2 buffers
-map('n', '<leader><leader>', '<C-^>')
+map('n', '<leader><leader>', '<cmd>lua TOGGLE_BUFF()<CR>')
+TOGGLE_BUFF = function()
+    local prev_buf_name = vim.api.nvim_exec('echo bufname("#")', true)
+    if prev_buf_name ~= nil and prev_buf_name ~= '' and prev_buf_name ~= 'NvimTree_1' then
+        vim.cmd('e #')
+    end
+end
 
 -- allow go to files that do not exist
 map('', 'gf', ':edit <cfile><CR>')
