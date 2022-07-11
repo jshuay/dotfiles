@@ -93,3 +93,11 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.api.nvim_set_hl(0, 'NvimTreeOpenedFile', { fg = '#fabd2f', ctermfg = 214 })
     end
 })
+
+vim.api.nvim_create_autocmd({ 'FileType', 'BufEnter', 'BufWinEnter' }, {
+    group = vim.api.nvim_create_augroup('NvimTreeCursorLine', { clear = true }),
+    pattern = { 'NvimTree_1', 'NvimTree' },
+    callback = function()
+        vim.opt_local.cursorline = true
+    end
+})
