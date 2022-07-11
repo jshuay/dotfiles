@@ -5,7 +5,7 @@ local config = function(file)
 end
 
 packer.startup(function(use)
-    -- packer manges itself
+    -- packer manages itself
     use({ 'wbthomason/packer.nvim' })
 
     use({
@@ -155,6 +155,11 @@ packer.startup(function(use)
     use({
         'stevearc/stickybuf.nvim',
         config = config('stickybuf')
+    })
+
+    use({
+        'petertriho/nvim-scrollbar',
+        config = config('scrollbar')
     })
 
     if PACKER_BOOTSTRAP then
