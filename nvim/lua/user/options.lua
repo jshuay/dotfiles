@@ -75,6 +75,8 @@ vim.api.nvim_create_autocmd('FileType', {
     group = vim.api.nvim_create_augroup('ColorColsForGit', { clear = true }),
     pattern = { 'gitcommit' },
     callback = function()
-        vim.o.colorcolumn = '50,72'
+        vim.opt_local.colorcolumn = '50,72'
     end
 })
+
+vim.o.cursorline = false

@@ -18,7 +18,10 @@ M.on_attach = function(client, bufnr)
     vim.cmd('command! Format execute "lua vim.lsp.buf.formatting()"')
 
     -- aerial (code outline) integration
-    require('aerial').on_attach(client, bufnr)
+    local aerial_status, aerial = pcall(require, 'aerial')
+    if aerial_status then
+        aerial.on_attach(client, bufnr)
+    end
 end
 
 map('n', '<leader>rr', '<cmd>lua vim.lsp.buf.document_highlight()<CR>')
