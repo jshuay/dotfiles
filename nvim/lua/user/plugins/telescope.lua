@@ -144,6 +144,6 @@ map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers({ initial_
 
 map('n', '<leader>/', '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>')
 
-map('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
+map('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references({ trim_text = true, fname_width = 50 })<CR>')
 
 map('n', '<leader>ss', '<cmd>lua require("telescope.builtin").spell_suggest({ layout_strategy = "cursor", layout_config = { height = 0.4, width = 0.15 }, initial_mode = "normal", prompt_title = "Spell", results_title = "" })<CR>')
