@@ -38,10 +38,10 @@ packer.startup(function(use)
         config = config('close-buffers')
     })
 
-    use({
-        'voldikss/vim-floaterm',
-        config = config('floaterm')
-    })
+    -- use({
+    --     'voldikss/vim-floaterm',
+    --     config = config('floaterm')
+    -- })
 
     -- use({
     --     'junegunn/fzf.vim',
