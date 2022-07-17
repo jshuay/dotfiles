@@ -162,6 +162,11 @@ packer.startup(function(use)
         config = config('scrollbar')
     })
 
+    use({
+        'jakewvincent/mkdnflow.nvim',
+        config = config('mkdnflow')
+    })
+
     if PACKER_BOOTSTRAP then
         packer.sync()
     end
