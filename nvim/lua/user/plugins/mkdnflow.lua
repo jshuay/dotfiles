@@ -45,7 +45,7 @@ MKDNFLOW_O_OVERRIDE = function()
         vim.api.nvim_feedkeys('O', 'n', true)
         return
     end
-    local keys = vim.api.nvim_replace_termcodes('k<cmd>MkdnExtendList<CR>A', true, false, true)
+    local keys = vim.api.nvim_replace_termcodes('k<cmd>silent! MkdnExtendList<CR>A', true, false, true)
     vim.api.nvim_feedkeys(keys, 'n', true)
 end
 
@@ -57,17 +57,17 @@ vim.api.nvim_create_autocmd('FileType', {
 
         bmap(args.buf, 'n', '<leader>v', '^v$')
 
-        bmap(args.buf, 'n', '<CR>', '<cmd>MkdnFollowLink<CR>')
-        bmap(args.buf, 'v', '<CR>', '<cmd>MkdnFollowLink<CR><Esc>')
-        bmap(args.buf, 'n', '<BS>', '<cmd>MkdnGoBack<CR>')
+        bmap(args.buf, 'n', '<CR>', '<cmd>silent! MkdnFollowLink<CR>')
+        bmap(args.buf, 'v', '<CR>', '<cmd>silent! MkdnFollowLink<CR><Esc>')
+        bmap(args.buf, 'n', '<BS>', '<cmd>silent! MkdnGoBack<CR>')
 
-        bmap(args.buf, 'n', '<Del>', '<cmd>MkdnDestroyLink<CR>')
+        bmap(args.buf, 'n', '<Del>', '<cmd>silent! MkdnDestroyLink<CR>')
 
-        bmap(args.buf, 'n', '-', '<cmd>MkdnIncreaseHeading<CR>')
-        bmap(args.buf, 'n', '=', '<cmd>MkdnDecreaseHeading<CR>')
+        bmap(args.buf, 'n', '-', '<cmd>silent! MkdnIncreaseHeading<CR>')
+        bmap(args.buf, 'n', '=', '<cmd>silent! MkdnDecreaseHeading<CR>')
 
-        bmap(args.buf, 'n', '<C-Space>', '<cmd>MkdnToggleToDo<CR>')
-        bmap(args.buf, 'i', '<CR>', '<cmd>MkdnNewListItem<CR>')
+        bmap(args.buf, 'n', '<C-Space>', '<cmd>silent! MkdnToggleToDo<CR>')
+        bmap(args.buf, 'i', '<CR>', '<cmd>silent! MkdnNewListItem<CR>')
         bmap(args.buf, 'i', '<Tab>', '<C-t><cmd>silent! MkdnUpdateNumbering<CR>')
         bmap(args.buf, 'i', '<S-Tab>', '<C-d><cmd>silent! MkdnUpdateNumbering<CR>')
         bmap(args.buf, 'n', 'o', '<cmd>MkdnExtendList<CR>A')
