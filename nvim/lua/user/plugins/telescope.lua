@@ -146,4 +146,4 @@ map('n', '<leader>/', '<cmd>lua require("telescope.builtin").current_buffer_fuzz
 
 map('n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<CR>')
 
-map('n', 'gs', '<cmd>lua require("telescope.builtin").spell_suggest({ layout_strategy = "cursor", layout_config = { height = 0.4, width = 0.15 }, initial_mode = "normal", prompt_title = "Spell", results_title = "" })<CR>')
+map('n', '<leader>ss', '<cmd>lua require("telescope.builtin").spell_suggest({ layout_strategy = "cursor", layout_config = { height = 0.4, width = 0.15 }, initial_mode = "normal", prompt_title = "Spell", results_title = "" })<CR>')

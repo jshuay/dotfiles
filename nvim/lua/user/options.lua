@@ -70,6 +70,7 @@ vim.o.showcmd = false
 vim.o.spell = true
 vim.o.spelllang = 'en_us'
 vim.o.spellsuggest = 'best,9'
+vim.o.spellfile = vim.fn.stdpath('data') .. '/spell/en.utf-8.add'
 
 vim.api.nvim_create_autocmd('FileType', {
     group = vim.api.nvim_create_augroup('ColorColsForGit', { clear = true }),

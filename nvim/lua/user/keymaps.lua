@@ -52,3 +52,5 @@ map('n', 'Q', '<Nop>')
 map('v', 'y', 'myy`y')
 map('v', 'Y', 'myY`y')
 
+map('n', '<leader>sg', 'zg')
+map('n', '<leader>sb', 'zw')
