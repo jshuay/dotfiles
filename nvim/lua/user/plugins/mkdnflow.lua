@@ -16,7 +16,7 @@ mkdnflow.setup({
     use_mappings_table = false,
     silent = true,
     links = {
-        conceal = true,
+        -- conceal = true,
         transform_explicit = link_name
     },
     perspective = {
@@ -54,6 +54,8 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'markdown' },
     callback = function(args)
         vim.opt_local.textwidth = 120
+
+        vim.opt_local.conceallevel = 2
 
         local bmap = require('lib.keymap').buf_keymap
 
