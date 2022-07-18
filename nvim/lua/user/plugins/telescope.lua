@@ -113,12 +113,12 @@ telescope.setup({
         }
     },
     extensions = {
-        fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = 'smart_case'
-        }
+        -- fzf = {
+        --     fuzzy = true,
+        --     override_generic_sorter = true,
+        --     override_file_sorter = true,
+        --     case_mode = 'smart_case'
+        -- }
     }
 })
 
@@ -132,12 +132,20 @@ vim.api.nvim_create_autocmd('FileType', {
     end
 })
 
+LIVE_GREP_LITERAL = function()
+    telescope.extensions.live_grep_args.live_grep_args({ initial_mode = 'normal', prompt_title = 'Live Grep (Literal)' })
+    local picker = action_state.get_current_picker(vim.api.nvim_get_current_buf())
+    picker:set_prompt('-F -- ""')
+    vim.api.nvim_feedkeys('i', 'n', true)
+end
+
 local map = require('lib.keymap').keymap
 
 map('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<CR>')
 map('n', '<leader>fF', '<cmd>lua require("telescope.builtin").find_files({ no_ignore = true, prompt_title = "All Files" })<CR>')
 
-map('n', '<leader>fg', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>')
+map('n', '<leader>fg', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args({ prompt_title = "Live Grep" })<CR>')
+map('n', '<leader>fG', '<cmd>lua LIVE_GREP_LITERAL()<CR>')
 -- map('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<CR>')
 
 map('n', '<leader>fb', '<cmd>lua require("telescope.builtin").buffers({ initial_mode = "normal" })<CR>')
