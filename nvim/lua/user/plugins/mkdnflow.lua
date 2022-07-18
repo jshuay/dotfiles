@@ -33,7 +33,7 @@ mkdnflow_links.createLink = function()
     if line == nil or line == '' then
         local line_num = vim.api.nvim_win_get_cursor(0)[1]
         local date = os.date('%Y-%m-%d')
-        vim.api.nvim_buf_set_lines(0, line_num - 1, line_num, true, { string.format('[%s](%s.md)', date, date) })
+        vim.api.nvim_buf_set_lines(0, line_num - 1, line_num, true, { string.format('# %s', date) })
         return
     end
     return original_create_links()
@@ -46,13 +46,15 @@ MKDNFLOW_O_OVERRIDE = function()
         return
     end
     local keys = vim.api.nvim_replace_termcodes('k<cmd>silent! MkdnExtendList<CR>A', true, false, true)
-    vim.api.nvim_feedkeys(keys, 'n', true)
+    vim.api.nvim_feedkeys(keys, 'n', false)
 end
 
 vim.api.nvim_create_autocmd('FileType', {
     group = vim.api.nvim_create_augroup('mkdnflowOverrides', { clear = true }),
     pattern = { 'markdown' },
     callback = function(args)
+        vim.opt_local.textwidth = 120
+
         local bmap = require('lib.keymap').buf_keymap
 
         bmap(args.buf, 'n', '<leader>v', '^v$')
