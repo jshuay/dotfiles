@@ -8,7 +8,7 @@ local tree_cb = require('nvim-tree.config').nvim_tree_callback
 nvim_tree.setup({
     git = { ignore = true },
     view = {
-        width = 50,
+        width = 40,
         mappings = {
             custom_only = false,
             list = {
@@ -31,7 +31,7 @@ nvim_tree.setup({
             enable = true
         },
         highlight_opened_files = 'all',
-        group_empty = false,
+        group_empty = true,
         -- For Windows, download a font from Nerd Fonts
         -- https://github.com/kyazdani42/nvim-web-devicons/issues/76#issuecomment-998656272
         icons = {
@@ -71,7 +71,7 @@ nvim_tree.setup({
 
 local map = require('lib.keymap').keymap
 
-map('n', '<leader>n', '<cmd>NvimTreeFindFileToggle<CR>:NvimTreeResize 50<CR>')
+map('n', '<leader>n', '<cmd>NvimTreeFindFileToggle<CR>:NvimTreeResize 40<CR>')
 
 vim.api.nvim_create_autocmd('FileType', {
     group = vim.api.nvim_create_augroup('NvimTreeKeymap', { clear = true }),

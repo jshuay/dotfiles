@@ -21,8 +21,8 @@ aerial.setup({
         "Variable"
     },
     open_automatic = function(bufnr)
-        return aerial.num_symbols(bufnr) > 0
-        -- return aerial.num_symbols(bufnr) > 0 and not aerial.was_closed()
+        -- return aerial.num_symbols(bufnr) > 0
+        return aerial.num_symbols(bufnr) > 0 and not aerial.was_closed()
     end
 })
 

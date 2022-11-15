@@ -53,6 +53,9 @@ servers[sh.server] = sh.opts
 local python = require('user.plugins.lsp.python')
 servers[python.server] = python.opts
 
+local perl = require('user.plugins.lsp.perl')
+servers[perl.server] = perl.opts
+
 lsp_installer.setup({
     -- automatic_installation = true
 })
