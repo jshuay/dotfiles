@@ -24,6 +24,14 @@ local select_prev_item = cmp.mapping(
     { 'i', 's' }
 )
 
+SHOW_CMP = function()
+    if cmp.visible() then
+        cmp.abort()
+        return
+    end
+    cmp.complete()
+end
+
 cmp.setup({
     experimental = {
         ghost_text = true
@@ -63,13 +71,7 @@ cmp.setup({
         ['<C-Down>'] = cmp.mapping.scroll_docs(4),
         ['<C-k>'] = cmp.mapping.scroll_docs(-4),
         ['<C-Up>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-Space>'] = cmp.mapping(function()
-            if cmp.visible() then
-                cmp.abort()
-                return
-            end
-            cmp.complete()
-        end, { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping(SHOW_CMP, { 'i', 'c' }),
         ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = false
