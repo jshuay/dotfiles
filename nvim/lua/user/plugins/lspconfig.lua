@@ -56,6 +56,12 @@ servers[python.server] = python.opts
 local perl = require('user.plugins.lsp.perl')
 servers[perl.server] = perl.opts
 
+local html = require('user.plugins.lsp.html')
+servers[html.server] = html.opts
+
+local css = require('user.plugins.lsp.css')
+servers[css.server] = css.opts
+
 lsp_installer.setup({
     -- automatic_installation = true
 })
