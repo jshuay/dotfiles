@@ -16,12 +16,6 @@ M.on_attach = function(client, bufnr)
     -- bmap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
 
     vim.cmd('command! Format execute "lua vim.lsp.buf.formatting()"')
-
-    -- aerial (code outline) integration
-    local aerial_status, aerial = pcall(require, 'aerial')
-    if aerial_status then
-        aerial.on_attach(client, bufnr)
-    end
 end
 
 map('n', '<leader>rr', '<cmd>lua vim.lsp.buf.document_highlight()<CR>')
@@ -31,7 +25,8 @@ local status, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not status then
     M.capabilities = {}
 else
-    M.capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    -- M.capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    M.capabilities = cmp_nvim_lsp.default_capabilities()
     M.capabilities.textDocument.completion.completionItem.snippetSupport = false
 end
 

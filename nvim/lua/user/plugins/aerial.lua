@@ -5,9 +5,8 @@ end
 
 aerial.setup({
     backends = { 'lsp', 'treesitter', 'markdown' },
-    default_bindings = false,
     show_guides = true,
-    close_behavior = 'close',
+    close_automatic_events = { "switch_buffer" },
     filter_kind = {
         "Class",
         "Constant",
@@ -20,10 +19,44 @@ aerial.setup({
         "Struct",
         "Variable"
     },
-    open_automatic = function(bufnr)
-        -- return aerial.num_symbols(bufnr) > 0
-        return aerial.num_symbols(bufnr) > 0 and not aerial.was_closed()
-    end
+    keymaps = {
+        ["?"] = false,
+        ["g?"] = false,
+        ["<CR>"] = false,
+        ["<2-LeftMouse>"] = false,
+        ["<C-v>"] = false,
+        ["<C-s>"] = false,
+        ["p"] = false,
+        ["<C-j>"] = false,
+        ["<C-k>"] = false,
+        ["{"] = false,
+        ["}"] = false,
+        ["[["] = false,
+        ["]]"] = false,
+        ["q"] = false,
+        ["o"] = false,
+        ["za"] = false,
+        ["O"] = false,
+        ["zA"] = false,
+        ["l"] = false,
+        ["zo"] = false,
+        ["L"] = false,
+        ["zO"] = false,
+        ["h"] = false,
+        ["zc"] = false,
+        ["H"] = false,
+        ["zC"] = false,
+        ["zr"] = false,
+        ["zR"] = false,
+        ["zm"] = false,
+        ["zM"] = false,
+        ["zx"] = false,
+        ["zX"] = false
+    },
+    -- open_automatic = function(bufnr)
+    --     -- return aerial.num_symbols(bufnr) > 0
+    --     return aerial.num_symbols(bufnr) > 0 and not aerial.was_closed()
+    -- end
 })
 
 local map = require('lib.keymap').keymap
@@ -49,7 +82,9 @@ vim.api.nvim_create_autocmd('QuitPre', {
     group = vim.api.nvim_create_augroup('AerialAutoClose', { clear = true }),
     pattern = { '*' },
     callback = function(args)
-        if aerial.is_open(args.buf) then
+        if aerial.is_open({
+            bufnr = args.buf
+        }) then
             aerial.close()
         end
     end
