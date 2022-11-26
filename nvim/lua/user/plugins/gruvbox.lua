@@ -1,5 +1,7 @@
 vim.g.gruvbox_invert_selection = 0
 vim.g.gruvbox_bold = 0
+vim.g.gruvbox_contrast_dark = 'hard'
+vim.g.gruvbox_sign_column = 'bg0'
 
 vim.api.nvim_create_autocmd('ColorScheme', {
     group = vim.api.nvim_create_augroup('GruvboxOverrides', { clear = true }),
