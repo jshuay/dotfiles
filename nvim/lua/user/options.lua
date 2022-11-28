@@ -42,7 +42,7 @@ vim.o.hidden = true
 -- vim.o.clipboard:append('unnamedplus')
 
 -- Side gutter
-vim.o.signcolumn = 'auto:2'
+vim.o.signcolumn = 'yes:1'
 
 -- Show unwanted characters
 vim.o.list = true

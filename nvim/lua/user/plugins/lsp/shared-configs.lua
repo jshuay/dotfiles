@@ -19,7 +19,7 @@ M.on_attach = function(client, bufnr)
 end
 
 map('n', '<leader>rr', '<cmd>lua vim.lsp.buf.document_highlight()<CR>')
-map('n', '<leader>rc', '<cmd>lua vim.lsp.buf.clear_references()<CR>')
+map('n', '<leader>cr', '<cmd>lua vim.lsp.buf.clear_references()<CR>')
 
 local status, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not status then

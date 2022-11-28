@@ -4,5 +4,5 @@ if not status then
 end
 
 gitsigns.setup({
-    sign_priority = 20
+    sign_priority = 9,
 })

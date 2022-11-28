@@ -55,6 +55,6 @@ map('v', 'Y', 'myY`y')
 map('n', '<leader>sg', 'zg')
 map('n', '<leader>sb', 'zw')
 
-map('n', 'fmt', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+map('n', '<leader>fmt', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 
 map('n', '<C-Space>', 'i<cmd>lua SHOW_CMP()<CR>')

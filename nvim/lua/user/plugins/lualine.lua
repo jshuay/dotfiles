@@ -42,6 +42,8 @@ local line_location = function()
     return vim.fn.line('.') .. ':' .. vim.fn.line('$') .. ' L'
 end
 
+local diagnostics_symbols = require('user.diagnostics_symbols')
+
 lualine.setup ({
     options = {
         disabled_filetypes = { 'NvimTree', 'aerial' }
@@ -54,7 +56,16 @@ lualine.setup ({
             'branch',
             'diff',
             -- '"LSP " .. tostring(#vim.tbl_keys(vim.lsp.buf_get_clients()))',
-            { 'diagnostics', sources = { 'nvim_diagnostic' } },
+            {
+                'diagnostics',
+                sources = { 'nvim_diagnostic' },
+                symbols = {
+                    error = diagnostics_symbols.ERROR,
+                    warn = diagnostics_symbols.WARN,
+                    info = diagnostics_symbols.INFO,
+                    hint = diagnostics_symbols.HINT,
+                }
+            },
         },
         lualine_c = {
             { 'filename', path = 1 }

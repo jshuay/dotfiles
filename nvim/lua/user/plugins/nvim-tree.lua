@@ -45,12 +45,12 @@ nvim_tree.setup({
                 default = '',
                 symlink = '',
                 git = {
-                    unstaged = '',
-                    staged = 'ﰂ',
+                    unstaged = '',
+                    staged = '',
                     unmerged = '',
-                    renamed = '➜',
-                    deleted = '',
-                    untracked = '⬚',
+                    renamed = '﬌',
+                    deleted = '',
+                    untracked = '',
                     ignored = ''
                 },
                 folder = {

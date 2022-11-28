@@ -86,8 +86,16 @@ packer.startup(function(use)
     })
 
     use({
+        'kevinhwang91/nvim-hlslens',
+        config = config('hlslens')
+    })
+
+    use({
         'lewis6991/gitsigns.nvim',
-        requires = 'nvim-lua/plenary.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'kevinhwang91/nvim-hlslens'
+        },
         config = config('gitsigns')
     })
 

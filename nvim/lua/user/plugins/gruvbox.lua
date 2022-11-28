@@ -13,5 +13,14 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
         vim.api.nvim_set_hl(0, 'NormalFloat', {})
         vim.api.nvim_set_hl(0, 'FloatBorder', {})
+
+        vim.api.nvim_set_hl(0, 'ScrollbarHandleCustom', { bg = '#1d2021' })
+        vim.api.nvim_set_hl(0, 'ScrollbarSearchCustom', { fg = '#458588' })
+        vim.api.nvim_set_hl(0, 'ScrollbarCursorCustom', { fg = '#fabd2f' })
+
+        vim.api.nvim_set_hl(0, 'GitSignsChange', { fg = '#fe8019' })
+
+        vim.api.nvim_set_hl(0, 'Search', {})
+        vim.api.nvim_set_hl(0, 'IncSearch', {})
     end
 })
