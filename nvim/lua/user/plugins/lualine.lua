@@ -68,7 +68,7 @@ lualine.setup ({
             },
         },
         lualine_c = {
-            { 'filename', path = 1 }
+            { FILENAME }
         },
         lualine_x = {
             -- 'fileformat',

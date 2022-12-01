@@ -58,3 +58,10 @@ map('n', '<leader>sb', 'zw')
 map('n', '<leader>fmt', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 
 map('n', '<C-Space>', 'i<cmd>lua SHOW_CMP()<CR>')
+
+map('n', '<leader>fn', '<cmd>lua print(FILENAME())<CR>')
+FILENAME = function()
+    local filename = vim.fn.expand('%:p:~:.')
+    local index = filename:find("?")
+    return filename:sub(0, (index and index or 0) - 1)
+end
