@@ -12,6 +12,10 @@ scrollbar.setup({
         'NvimTree',
         'aerial'
     },
+    excluded_buftypes = {
+        'terminal',
+        'nofile'
+    },
     handle = {
         highlight = 'ScrollbarHandleCustom'
     },

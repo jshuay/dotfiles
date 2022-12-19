@@ -27,7 +27,7 @@ map('n', '<leader>c/', ":noh<CR>")
 
 -- Integration with scrollbar
 scrollbar_search.setup({
-    -- calm_down = true,
+    calm_down = true,
     nearest_float_when = 'never',
     override_lens = function(render, posList, nearest, idx, _)
         if nearest then

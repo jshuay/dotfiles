@@ -5,6 +5,20 @@ end
 
 lualine.setup()
 
+local filename = function()
+    local file_name = FILENAME();
+    if file_name == '' then
+        file_name = '[No Name]'
+    end
+    if vim.bo.modified then
+        file_name = file_name .. ' ' .. '[+]'
+    end
+    if vim.bo.modifiable == false or vim.bo.readonly == true then
+        file_name = file_name .. ' ' .. '[-]'
+    end
+    return file_name
+end
+
 local buffer_info = function()
     local buffer_count = 0
     local bufs = vim.api.nvim_list_bufs()
@@ -68,7 +82,7 @@ lualine.setup ({
             },
         },
         lualine_c = {
-            { FILENAME }
+            { filename }
         },
         lualine_x = {
             -- 'fileformat',
