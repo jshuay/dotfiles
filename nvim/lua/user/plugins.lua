@@ -62,12 +62,19 @@ packer.startup(function(use)
         'nvim-treesitter/playground'
     })
 
+    -- use({
+    --     'williamboman/nvim-lsp-installer',
+    --     {
+    --         'neovim/nvim-lspconfig',
+    --         config = config('lspconfig')
+    --     }
+    -- })
     use({
-        'williamboman/nvim-lsp-installer',
-        {
-            'neovim/nvim-lspconfig',
-            config = config('lspconfig')
-        }
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig',
+        run = ':MasonUpdate',
+        config = config('lspconfig')
     })
 
     use({
@@ -85,16 +92,16 @@ packer.startup(function(use)
         config = config('cmp')
     })
 
-    use({
-        'kevinhwang91/nvim-hlslens',
-        config = config('hlslens')
-    })
+    -- use({
+    --     'kevinhwang91/nvim-hlslens',
+    --     config = config('hlslens')
+    -- })
 
     use({
         'lewis6991/gitsigns.nvim',
         requires = {
             'nvim-lua/plenary.nvim',
-            'kevinhwang91/nvim-hlslens'
+            -- 'kevinhwang91/nvim-hlslens'
         },
         config = config('gitsigns')
     })
@@ -160,10 +167,10 @@ packer.startup(function(use)
         config = config('aerial')
     })
 
-    use({
-        'stevearc/stickybuf.nvim',
-        config = config('stickybuf')
-    })
+    -- use({
+    --     'stevearc/stickybuf.nvim',
+    --     config = config('stickybuf')
+    -- })
 
     use({
         'petertriho/nvim-scrollbar',
@@ -173,6 +180,11 @@ packer.startup(function(use)
     -- use({
     --     'jakewvincent/mkdnflow.nvim',
     --     config = config('mkdnflow')
+    -- })
+
+    -- use({
+    --     'simrat39/rust-tools.nvim',
+    --     config = config('rust-tools')
     -- })
 
     if PACKER_BOOTSTRAP then

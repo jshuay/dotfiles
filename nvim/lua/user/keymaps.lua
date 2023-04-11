@@ -65,3 +65,7 @@ FILENAME = function()
     local index = filename:find("?")
     return filename:sub(0, (index and index or 0) - 1)
 end
+
+-- For some reason, using '<cmd>' causes the clear to be delayed. Explicitly
+-- using ':' makes it clear immediately.
+map('n', '<leader>c/', ":noh<CR>")

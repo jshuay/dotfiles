@@ -20,9 +20,9 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
         vim.api.nvim_set_hl(0, 'GitSignsChange', { fg = '#fe8019' })
 
-        vim.api.nvim_set_hl(0, 'Search', {})
-        vim.api.nvim_set_hl(0, 'IncSearch', { fg = "#fabd2f", ctermfg = 214, reverse = true })
+        -- vim.api.nvim_set_hl(0, 'Search', {})
+        -- vim.api.nvim_set_hl(0, 'IncSearch', { fg = "#fabd2f", ctermfg = 214, reverse = true })
 
-        vim.api.nvim_set_hl(0, 'Whitespace', { fg = '#928374', ctermfg = 245 })
+        -- vim.api.nvim_set_hl(0, 'Whitespace', { fg = '#928374', ctermfg = 245 })
     end
 })

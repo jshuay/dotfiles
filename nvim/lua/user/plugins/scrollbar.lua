@@ -50,7 +50,7 @@ scrollbar.setup({
     },
     handlers = {
         gitsigns = true,
-        search = true
+        -- search = true
     }
 })
 

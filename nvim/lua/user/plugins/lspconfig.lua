@@ -1,5 +1,10 @@
-local lsp_installer_status, lsp_installer = pcall(require, 'nvim-lsp-installer')
-if not lsp_installer_status then
+local mason_status, mason = pcall(require, 'mason')
+if not mason_status then
+    return
+end
+
+local mason_lspconfig_status, mason_lspconfig = pcall(require, 'mason-lspconfig')
+if not mason_lspconfig_status then
     return
 end
 
@@ -7,6 +12,9 @@ local lspconfig_status, lspconfig = pcall(require, 'lspconfig')
 if not lspconfig_status then
     return
 end
+
+mason.setup({})
+mason_lspconfig.setup({})
 
 local map = require('lib.keymap').keymap
 
@@ -64,10 +72,6 @@ servers[html.server] = html.opts
 local css = require('user.plugins.lsp.css')
 servers[css.server] = css.opts
 
-lsp_installer.setup({
-    -- automatic_installation = true
-})
-
 for server,opts in pairs(servers) do
     lspconfig[server].setup({
         on_attach = opts.on_attach,
@@ -81,10 +85,3 @@ for server,opts in pairs(servers) do
     })
 end
 
--- lsp_installer.on_server_ready(function(server)
---     if opts[server.name] then
---         server:setup(opts[server.name])
---         return
---     end
---     server:setup(opts.default)
--- end)

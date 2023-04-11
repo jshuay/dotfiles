@@ -13,7 +13,10 @@ return {
                     importPrefix = 'self'
                 },
                 cargo = {
-                    loadOutDirsFromCheck = true
+                    -- loadOutDirsFromCheck = true
+                    buildScripts = {
+                        enable = true
+                    }
                 },
                 procMacro = {
                     enable = true

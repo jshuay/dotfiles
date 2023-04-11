@@ -70,6 +70,7 @@ vim.api.nvim_create_autocmd('FileType', {
         local bmap = require('lib.keymap').buf_keymap
 
         bmap(args.buf, 'n', 'o', '<cmd>lua require("aerial").select()<CR>')
+        bmap(args.buf, 'n', '<CR>', '<cmd>lua require("aerial").select()<CR>')
         bmap(args.buf, 'n', 'v', '<cmd>lua require("aerial").select({ split = "v" })<CR>')
         bmap(args.buf, 'n', 's', '<cmd>lua require("aerial").select({ jump = false })<CR>')
         bmap(args.buf, 'n', 'q', '<cmd>AerialClose<CR>')

@@ -17,7 +17,7 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 
 vim.o.incsearch = true
-vim.o.hlsearch = false
+-- vim.o.hlsearch = false
 
 vim.o.backup = true
 vim.o.backupdir = vim.fn.stdpath('data') .. '/backup//'
@@ -81,3 +81,6 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.o.cursorline = false
+
+-- vim.lsp.set_log_level = 'trace'
+-- require('vim.lsp.log').set_format_func(vim.inspect)
