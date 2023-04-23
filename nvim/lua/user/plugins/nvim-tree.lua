@@ -3,8 +3,11 @@ if not status then
     return
 end
 
-local on_attach = function()
+local on_attach = function(bufnr)
     local api = require('nvim-tree.api')
+
+    api.config.mappings.default_on_attach(bufnr)
+
     vim.keymap.set('n', 'v', api.node.open.vertical, { noremap = true, silent = true })
 end
 
