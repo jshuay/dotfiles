@@ -3,17 +3,18 @@ if not status then
     return
 end
 
-local tree_cb = require('nvim-tree.config').nvim_tree_callback
+local on_attach = function()
+    local api = require('nvim-tree.api')
+    vim.keymap.set('n', 'v', api.node.open.vertical, { noremap = true, silent = true })
+end
 
 nvim_tree.setup({
+    on_attach = on_attach,
     git = { ignore = true },
     view = {
         width = 40,
         mappings = {
             custom_only = false,
-            list = {
-                { key = 'v', cb = tree_cb('vsplit') }
-            }
         }
     },
     update_focused_file = {
