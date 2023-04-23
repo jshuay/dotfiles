@@ -1,7 +1,7 @@
 local shared_configs = require('user.plugins.lsp.shared-configs')
 
 return {
-    server = 'angularls',
+    server = 'html',
     opts = {
         on_attach = shared_configs.on_attach,
         capabilities = shared_configs.capabilities,
