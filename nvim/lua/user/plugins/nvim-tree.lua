@@ -8,7 +8,7 @@ local on_attach = function(bufnr)
 
     api.config.mappings.default_on_attach(bufnr)
 
-    vim.keymap.set('n', 'v', api.node.open.vertical, { noremap = true, silent = true })
+    vim.keymap.set('n', 'v', api.node.open.vertical, { noremap = true, silent = true, buffer = bufnr })
 end
 
 nvim_tree.setup({
