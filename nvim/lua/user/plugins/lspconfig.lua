@@ -77,10 +77,10 @@ for server,opts in pairs(servers) do
         on_attach = opts.on_attach,
         capabilities = opts.capabilities,
         settings = opts.settings,
-        flags = {
-            -- This will be default in neovim 0.7.0+
-            debounce_text_changes = 150
-        },
+        -- flags = {
+        --     -- This will be default in neovim 0.7.0+
+        --     debounce_text_changes = 150
+        -- },
         handlers = opts.handlers
     })
 end

@@ -15,10 +15,7 @@ nvim_tree.setup({
     on_attach = on_attach,
     git = { ignore = true },
     view = {
-        width = 40,
-        mappings = {
-            custom_only = false,
-        }
+        width = 40
     },
     update_focused_file = {
         enable = true

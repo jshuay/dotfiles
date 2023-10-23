@@ -52,7 +52,6 @@ packer.startup(function(use)
     use({
         'nvim-treesitter/nvim-treesitter',
         requires = {
-            'lewis6991/spellsitter.nvim',
             'JoosepAlviste/nvim-ts-context-commentstring'
         },
         config = config('treesitter')
@@ -113,6 +112,7 @@ packer.startup(function(use)
 
     use({
         'j-hui/fidget.nvim',
+        tag = 'legacy',
         config = config('fidget')
     })
 
